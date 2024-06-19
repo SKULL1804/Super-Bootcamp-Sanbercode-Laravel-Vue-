@@ -1,0 +1,6 @@
+Data Peserta Super Bootcamp Laravel Vue Development
+1. Nama: Aiman Abdul Hakim
+2. Email: skullratcher@gmail.com
+3. Sistem Operasi yang digunakan: Windows 10
+4. Akun Gitlab/Github: https://github.com/SKULL1804/
+5. Akun Telegram: https://t.me/ratcher1804
