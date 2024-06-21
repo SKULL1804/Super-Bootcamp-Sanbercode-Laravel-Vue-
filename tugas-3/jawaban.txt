@@ -15,8 +15,7 @@ a. Buat Table
 
 b, insert data
     1. table genre
-        - INSERT INTO `genres`(`name`) VALUES ('action');
-        - INSERT INTO `genres`(`name`) VALUES ('drama');
+        - INSERT INTO `genres`(`name`) VALUES ('action'),('drama');
     2. table movie
         - INSERT INTO movies (title, summary, year, poster, genre_id) VALUES
           ('Attack On Titan', 'Kaku', 2015, 'aot.jpg', 1);
