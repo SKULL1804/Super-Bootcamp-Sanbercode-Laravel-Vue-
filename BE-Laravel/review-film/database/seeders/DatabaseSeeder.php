@@ -19,13 +19,13 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSedeer::class,
         ]);
-        
+
         $role = Role::where('name', 'admin')->first();
 
         User::factory()->create([
             'name' => 'admin',
             'email' => 'admin@mail.com',
-            'role_id' => $role,
+            'role_id' => $role->id,
             'password' => Hash::make('password'),
         ]);
     }
