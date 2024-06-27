@@ -11,7 +11,7 @@ use App\Http\Controllers\Api\MovieController;
 // })->middleware('auth:sanctum');
 
 Route::prefix('v1')->group(function () {
-    Route::post('/movie', [MovieController::class, 'store']);
+    Route::apiResource('movie', MovieController::class);
     Route::apiResource('cast', CastController::class);
     Route::apiResource('genre', GenreController::class);
 });

@@ -22,11 +22,11 @@ class MovieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required|max:255',
-            'summary' => 'required',
-            'year' => 'required|date',
-            'poster' => 'mimes:png,jpg,bmp',
-            'genre_id' => 'required'
+            'title' => 'sometimes|required|max:255',
+            'summary' => 'sometimes|required',
+            'year' => 'sometimes|required',
+            'poster' => 'nullable|image|mimes:png,jpg,bmp',
+            'genre_id' => 'sometimes|required'
         ];
     }
 
@@ -35,7 +35,6 @@ class MovieRequest extends FormRequest
         return [
             'title.required' => 'title harus diisi.',
             'summary.required' => 'summary harus diisi.',
-            'year.required' => 'year harus diisi.',
             'poster.mimes' => 'gambar hanya berformat png, jpg, bmp',
             'genre_id.required' => 'genre_id harus diisi.',
         ];

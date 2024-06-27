@@ -11,9 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('genres', function (Blueprint $table) {
+        Schema::create('profiles', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('name');
+            $table->uuid('user_id');
+            // relationship
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
+
+            $table->integer('age');
+            $table->text('biodata');
+            $table->text('address');
             $table->timestamps();
         });
     }
@@ -23,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('genres');
+        Schema::dropIfExists('profiles');
     }
 };

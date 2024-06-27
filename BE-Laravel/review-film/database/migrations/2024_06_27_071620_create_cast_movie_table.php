@@ -25,7 +25,7 @@ return new class extends Migration
                 ->references('id')
                 ->on('movies')
                 ->onDelete('cascade');
-                
+
             $table->timestamps();
         });
     }
