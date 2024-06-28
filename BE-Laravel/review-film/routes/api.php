@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CastController;
@@ -14,4 +15,11 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('movie', MovieController::class);
     Route::apiResource('cast', CastController::class);
     Route::apiResource('genre', GenreController::class);
+    Route::prefix('auth')->group(function () {
+        Route::post('/register', [AuthController::class, 'register']);
+        Route::post('/login', [AuthController::class, 'login']);
+        Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:api');
+    });
+    Route::get('/me', [AuthController::class, 'me'])->middleware('auth:api');
+    Route::post('/update-users', [AuthController::class, 'update'])->middleware('auth:api');
 });
