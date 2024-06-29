@@ -22,4 +22,5 @@ use App\Http\Controllers\Api\CommentController;
 
 Route::prefix('v1')->group(function () {
     Route::apiResource('post', PostController::class);
+    Route::apiResource('comment', CommentController::class);
 });
