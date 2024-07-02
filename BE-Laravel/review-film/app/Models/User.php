@@ -4,11 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Carbon\Carbon;
+use App\Models\OtpCode;
+use Tymon\JWTAuth\Contracts\JWTSubject;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
@@ -57,5 +59,31 @@ class User extends Authenticatable implements JWTSubject
     public function getJWTCustomClaims()
     {
         return [];
+    }
+
+    public static function boot() {
+        parent::boot();
+
+        static::created(function ($model) {
+            $model -> generateOtpCode();
+        });
+    }
+
+    public function generateOtpCode() {
+        do {
+            $randomNumber = mt_rand(100000, 999999);
+            $checkOtpCode = OtpCode::where('otp', $randomNumber)->first();
+        } while ($checkOtpCode);
+
+
+        $now = Carbon::now();
+
+       OtpCode::updateOrCreate(
+            ['user_id' => $this->id],
+            [
+                'otp' => $randomNumber,
+                'valid_until' => $now->addMinute(5)
+            ]
+        );
     }
 }
