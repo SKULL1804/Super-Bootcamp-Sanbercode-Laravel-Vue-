@@ -12,9 +12,11 @@ use Tymon\JWTAuth\Facades\JWTAuth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\Auth\RegisterRequest;
-
+use App\Mail\GenerateOtp;
+use App\Mail\RegisterOtp;
 
 class AuthController extends Controller
 {
@@ -50,6 +52,8 @@ class AuthController extends Controller
 
         $token = JWTAuth::fromUser($user);
 
+        Mail::to($user->email)->queue(new RegisterOtp($user));
+
         return response()->json([
             "message" => "User berhasil register",
             "user" => $user,
@@ -65,6 +69,8 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         $user->generateOtpCode();
+
+        Mail::to($user->email)->queue(new GenerateOtp($user));
 
         return response()->json([
             "message" => "Berhasil generate ulang otp",

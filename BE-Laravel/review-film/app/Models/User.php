@@ -8,7 +8,9 @@ use Carbon\Carbon;
 use App\Models\OtpCode;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -87,8 +89,16 @@ class User extends Authenticatable implements JWTSubject
         );
     }
 
-    public function role()
+    public function role() : BelongsTo
     {
         return $this->belongsTo(Role::class);
+    }
+
+    public function profile() : HasOne {
+        return $this->hasOne(Profile::class, 'user_id');
+    }
+
+    public function otpCode() : HasOne {
+        return $this->hasOne(OtpCode::class, 'user_id');
     }
 }
