@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Cast;
+use App\Models\CastMovie;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\CastRequest;
 use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Api\CastMovieRequest;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
 
-class CastController extends Controller implements HasMiddleware
+class CastMovieController extends Controller implements HasMiddleware
 {
     public static function middleware(): array
     {
@@ -23,25 +23,24 @@ class CastController extends Controller implements HasMiddleware
      * Display a listing of the resource.
      */
     public function index() : JsonResponse
-    {
-        $cast = Cast::all();
+        {
+            $castMovie = CastMovie::all();
 
-        return response()->json([
-            "message" => "data berhasil ditampilkan",
-            "data" => $cast
-        ]);
-    }
+            return response()->json([
+                "message" => "data berhasil ditampilkan",
+                "data" => $castMovie
+            ]);
+        }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CastRequest $request) : JsonResponse
+    public function store(CastMovieRequest $request) : JsonResponse
     {
-        $cast = Cast::create($request->all());
+        $castMovie = CastMovie::create($request->all());
 
         return response()->json([
-            "message" => "success",
-            "body" => $cast
+            "message" => "Yeah berhasil ditambahkan",
         ], 201);
     }
 
@@ -50,40 +49,40 @@ class CastController extends Controller implements HasMiddleware
      */
     public function show(string $id) : JsonResponse
     {
-        $cast = Cast::with('listMovie')->find($id);
+        $castMovie = CastMovie::with('movie', 'cast')->find($id);
 
-        if (!$cast) {
+        if (!$castMovie) {
             return response()->json([
-                "error" => "id tidak di temukan",
+                "error" => "id tidak ditemukan"
             ], 404);
         }
 
         return response()->json([
-            "message" => "detail data berhasil di tampilkan : $id",
-            "data" => $cast
+            "message" => "detail data berhasil ditampilkan : $id",
+            "data" => $castMovie,
         ], 200);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(CastRequest $request, string $id) : JsonResponse
+    public function update(CastMovieRequest $request, string $id)
     {
-        $cast = Cast::find($id);
+        $castMovie = CastMovie::find($id);
 
-        if (!$cast) {
+        if (!$castMovie) {
             return response()->json([
                 "error" => "id tidak di temukan",
             ], 404);
         }
 
-        $cast->fill($request->only(['name', 'age', 'biodata']));
+        $castMovie->fill($request->only(['name', 'cast_id', 'movie-id']));
 
-        $cast->save();
+        $castMovie->save();
 
         return response()->json([
             "message" => "update data berhasil di tampilkan : $id",
-            "body" => $cast
+            "body" => $castMovie
         ], 201);
     }
 
@@ -92,18 +91,18 @@ class CastController extends Controller implements HasMiddleware
      */
     public function destroy(string $id)
     {
-        $cast = Cast::find($id);
+        $castMovie = CastMovie::find($id);
 
-        if (!$cast) {
+        if (!$castMovie) {
             return response()->json([
                 "error" => "id tidak di temukan",
             ], 404);
         }
 
-        $cast->delete();
+        $castMovie->delete();
 
         return response()->json([
-            "message" => "data id : $id berhasil terhapus",
+            "message" => "Hore berhasil ke hapus",
         ], 200);
     }
 }

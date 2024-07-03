@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Http\Requests\GenreRequest;
+use App\Http\Requests\Api\GenreRequest;
 use App\Http\Controllers\Controller;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class GenreController extends Controller
+class GenreController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(['auth:api', 'isAdmin'], only: ['store','update', 'destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -40,7 +49,7 @@ class GenreController extends Controller
      */
     public function show(string $id) : JsonResponse
     {
-        $genre = Genre::find($id);
+        $genre = Genre::with('listMovie')->find($id);
 
         if (!$genre) {
             return response()->json([

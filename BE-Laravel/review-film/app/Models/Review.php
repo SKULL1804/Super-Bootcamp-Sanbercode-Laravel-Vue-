@@ -16,4 +16,5 @@ class Review extends Model
         'critic',
         'rating',
     ];
+    
 }

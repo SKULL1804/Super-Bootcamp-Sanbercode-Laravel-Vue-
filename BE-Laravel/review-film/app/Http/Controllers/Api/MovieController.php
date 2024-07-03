@@ -5,13 +5,22 @@ namespace App\Http\Controllers\Api;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use App\Http\Requests\MovieRequest;
+use App\Http\Requests\Api\MovieRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Routing\Controllers\Middleware;
+use Illuminate\Routing\Controllers\HasMiddleware;
 
-class MovieController extends Controller
+class MovieController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            new Middleware(['auth:api', 'isAdmin'], only: ['store', 'update', 'destroy']),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -63,7 +72,7 @@ class MovieController extends Controller
      */
     public function show(string $id) : JsonResponse
     {
-        $movie = Movie::find($id);
+        $movie = Movie::with('genre', 'listCast', 'listReview')->find($id);
 
         if (!$movie) {
             return response()->json([

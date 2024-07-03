@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,9 +19,7 @@ class isAdmin
     {
         $user = auth()->user();
 
-        $roleAdmin = User::where('name', 'admin')->first();
-
-        if ($user && $user->id === $roleAdmin->id) {
+        if ($user && $user->role && $user->role->name === 'admin') {
             return $next($request);
         }
 

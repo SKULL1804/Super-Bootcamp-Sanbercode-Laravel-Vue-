@@ -17,4 +17,19 @@ class Movie extends Model
         'poster',
         'year',
     ];
+
+    public function genre()
+    {
+        return $this->belongsTo(Genre::class);
+    }
+
+    public function listCast()
+    {
+        return $this->belongsToMany(Cast::class, 'cast_movie', 'movie_id', 'cast_id');
+    }
+
+    public function listReview()
+    {
+        return $this->hasMany(Review::class, 'movie_id');
+    }
 }

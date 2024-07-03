@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,11 +22,11 @@ class MovieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'sometimes|required|max:255',
-            'summary' => 'sometimes|required',
-            'year' => 'sometimes|required',
+            'title' => 'required|max:255',
+            'summary' => 'required',
+            'year' => 'required',
             'poster' => 'nullable|image|mimes:png,jpg,bmp',
-            'genre_id' => 'sometimes|required'
+            'genre_id' => 'required|exists:genres,id'
         ];
     }
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Api;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RoleRequest extends FormRequest
+class CastMovieRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,15 +22,18 @@ class RoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|max:255'
+            'name' => 'required',
+            'cast_id' => 'required|exists:casts,id',
+            'movie_id' => 'required|exists:movies,id'
         ];
     }
 
     public function messages(): array
     {
-       return[
+        return [
             'name.required' => 'name harus diisi',
-            'name.max' => 'name memiliki maksimal 255 karakter',
-       ];
+            'cast_id.required' => 'cast_id harus diisi.',
+            'movie_id.required' => 'movie_id harus diisi.',
+        ];
     }
 }
