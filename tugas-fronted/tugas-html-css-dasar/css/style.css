@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: #003366;
+}
+
+a:hover{
+    color: #007ba7;
+}
+
+body{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-image: url("../public/img/pattern.jpg");
+    font-family: 'Poppins', sans-serif;
+}
+
+header .navigation .logo img{
+    width: 200px;
+    object-fit: cover;
+}
+
+header .navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    height: 60px;
+    background-color: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+header .navigation .menu{
+    display: flex;
+    text-decoration: none;
+    gap: 20px;
+}
+
+header .navigation .menu li{
+    list-style: none;
+}
+
+.main-content {
+    height: 100vh;
+    flex: 1;
+    margin: 100px 120px;
+}
+
+section .card{
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+}
+
+section .card img{
+    width: 200px;
+    object-fit: cover;
+}
+
+section .card .header-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+section .card .header-title h1{
+    font-size: 24px;
+    margin-right: 20px;
+    color: #003366;
+}
+
+section .card .header-sub-title{
+    text-align: center;
+    color: #808080;
+}
+
+section .card span{
+    font-weight: bold;
+    color: #000;
+}
+
+section .card .data-peserta h3{
+    margin-top: 10px;
+}
+
+section .card .data-peserta .biodata{
+    padding: 10px 40px;
+}
+
+section .card .data-peserta .biodata span{
+    font-weight: normal;
+}
+
+section .card .data-peserta .biodata a i{
+    font-size: 22px;
+}
+section .card .data-peserta .biodata a span{
+    margin-left: 2px;
+    margin-top: 10px;
+}
+
+section .card .cara-belajar h3{
+    margin-top: 10px;
+}
+
+section .card .cara-belajar .tips{
+    padding: 10px 35px;
+}
+
+section .card .title {
+    padding: 10px 0;
+    text-align: center;
+}
+
+section .card-proses{
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+
+section .title{
+    text-align: center;
+}
+
+section .btn-back{
+    margin-top: 10px;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #007ba7;
+    padding: 10px 20px;
+    border: 2px #003366 solid;
+}
+
+section .btn-back a{
+    color: #fff;
+    font-weight: bold;
+}
+
+.card article {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.card article:last-child {
+    border-bottom: none;
+}
+
+.card article a {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003366;
+}
+
+.card article p {
+    color: #808080;
+    margin-top: 10px;
+}
+
+.form-register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-inbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-inbox.full-width {
+    grid-column: span 2;
+}
+
+.form-label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #003366;
+}
+
+.form-input, .form-select, .form-textarea {
+    padding: 10px;
+    border: 2px solid #003366;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+    outline: none;
+    border-color: #007ba7;
+}
+
+.form-radio, .form-checkbox {
+    margin-right: 10px;
+}
+
+.form-radio-group, .form-checkbox-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.form-button {
+    padding: 10px 20px;
+    background-color: #007ba7;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: #005f7f;
+}
+
+.form-textarea {
+    resize: vertical;
+}
+
+footer{
+    padding: 20px 40px;
+    background-color: #000;
+}
+
+footer .copyright{
+    text-align: center;
+    color: #fff;
+}

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Register | Sanbercode</title>
+</head>
+<body>
+    <header>
+        <nav class="navigation">
+            <div class="logo">
+                <a href="">
+                    <img src="public/img/logo.png" alt="">
+                </a>
+            </div>
+            <ul class="menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="form.html">Register</a></li>
+                <li><a href="article.html">Article</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main-content">
+        <section>
+            <div class="card">
+                <div class="title">
+                    <h1>Register Akun Baru</h1>
+                    <p>Isilah form di bawah ini</p>
+                </div>
+                <form action="process.html" class="form-register" method="post">
+                    <div class="form-inbox">
+                        <label for="first_name" class="form-label">First Name</label>
+                        <input type="text" name="first_name" id="first_name" class="form-input">
+                    </div>
+                    <div class="form-inbox">
+                        <label for="last_name" class="form-label">Last Name</label>
+                        <input type="text" name="last_name" id="last_name" class="form-input">
+                    </div>
+                    <div class="form-inbox full-width">
+                        <label for="gender" class="form-label">Gender</label>
+                        <div class="form-radio-group">
+                            <input type="radio" value="male" name="gender" class="form-radio"> Male
+                            <input type="radio" value="female" name="gender" class="form-radio"> Female
+                            <input type="radio" value="other" name="gender" class="form-radio"> Other
+                        </div>
+                    </div>
+                    <div class="form-inbox">
+                        <label for="nationality" class="form-label">Nationality</label>
+                        <select name="nationality" id="nationality" class="form-select">
+                            <option value="indonesia">Indonesia</option>
+                            <option value="malaysia">Malaysia</option>
+                            <option value="singapura">Singapura</option>
+                        </select>
+                    </div>
+                    <div class="form-inbox">
+                        <label for="focus" class="form-label">Sedang Fokus Belajar</label>
+                        <select name="focus" id="focus" class="form-select">
+                            <option value="reactjs">ReactJs</option>
+                            <option value="vuejs">VueJs</option>
+                            <option value="laravel">Laravel</option>
+                        </select>
+                    </div>
+                    <div class="form-inbox full-width">
+                        <label for="language_spoken" class="form-label">Language Spoken</label>
+                        <div class="form-checkbox-group">
+                            <input type="checkbox" value="english" name="language_spoken" class="form-checkbox"> English
+                            <input type="checkbox" value="indonesian" name="language_spoken" class="form-checkbox"> Indonesian
+                            <input type="checkbox" value="other" name="language_spoken" class="form-checkbox"> Other
+                        </div>
+                    </div>
+                    <div class="form-inbox full-width">
+                        <label for="deskripsi_diri_saya" class="form-label">Deskripsi Diri Saya</label>
+                        <textarea name="deskripsi_diri_saya" id="deskripsi_diri_saya" class="form-textarea"></textarea>
+                    </div>
+                    <div class="form-inbox full-width">
+                        <button type="submit" class="form-button">Register</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <div class="copyright">
+            <p>copyright &copy; 2024 by Sanbercode</p>
+        </div>
+    </footer>
+</body>
+</html>
