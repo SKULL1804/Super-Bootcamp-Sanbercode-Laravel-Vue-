@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error Validation| VueJs</title>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+    <div id="app" class="container">
+        <!-- Error Validation -->
+        <ul v-if="errors.length">
+            <li v-for="error in errors" class="error">{{ error }}</li>
+        </ul>
+        <!-- End Error Validation -->
+
+        <!-- Form -->
+        <form @submit.prevent="handleSubmit" class="form">
+            <div class="form-inbox">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" name="username" id="username" v-model="username" class="form-input">
+            </div>
+            <div class="form-inbox">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" id="password" v-model="password" class="form-input">
+            </div>
+            <div class="form-inbox" style="display: flex;
+            justify-content: space-between;
+            align-items: center;">
+                <button class="form-button"><a href="soal2.html">Back Soal 2</a></button>
+                <button type="submit" class="form-button">Submit</button>
+            </div>
+        </form>
+        <!-- End Form -->
+
+        <h3 style="margin-bottom: 10px;">Output</h3>
+        <!-- Output -->
+        <ul v-if="submitted">
+            <li>Username: {{ username }}</li>
+            <li>Password: {{ password }}</li>
+        </ul>
+         <!-- End Output -->
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp, ref } = Vue;
+      
+        createApp({
+          setup() {
+            const username = ref('');
+            const password = ref('');
+            const errors = ref([]);
+            const submitted = ref(false);
+            
+            const handleSubmit = () => {
+                errors.value = [];
+                submitted.value = false;
+                
+                if (username.value.length < 8) {
+                    errors.value.push('Username harus lebih dari 8 karakter');
+                }
+                
+                if (password.value.length < 8) {
+                    errors.value.push('Password harus lebih dari 8 karakter');
+                }
+
+                if (errors.value.length === 0) {
+                    submitted.value = true;
+                }
+            }
+            
+            return {
+                username,
+                password,
+                errors,
+                submitted,
+                handleSubmit
+            }
+          }
+        }).mount('#app');
+    </script>
+</body>
+</html>

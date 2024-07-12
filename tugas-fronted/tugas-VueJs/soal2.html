@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Rendering | VueJs</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" class="container">
+        <div class="heading">
+            <button class="btn"><a href="soal1.html">Back Soal 1</a></button>
+            <button class="btn"><a href="soal3.html">Soal 3</a></button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="person in people">
+                    <td>{{ person.name }}</td>
+                    <td>{{ person.age }}</td>
+                    <td>{{ person.address }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const { createApp, ref } = Vue;
+      
+        createApp({
+          setup() {
+            const people = ref([
+                { name: 'Rezky', age: 26, address: "Makassar" },
+                { name: 'Andi', age: 18, address: "Jakarta" },
+                { name: 'Budi', age: 33, address: "Bali" }
+            ]);
+
+            return {
+                people
+            }
+          }
+        }).mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+label{
+    place-items: center;
+    margin-bottom: 10px;
+    margin-right: 15px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+th {
+    background-color: #f2f2f2;
+
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 20rem;
+}
+
+.heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn{
+    background: hsl(0 0% 60% / 0.18);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 20px;
+}
+
+select{
+    border: 0;
+    outline: 0;
+    width: 20rem;
+    padding: 1rem 4rem 1rem 1rem;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    appearance: none;
+    background-image: url(http://cdn.onlinewebfonts.com/svg/img_295694.svg);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+option{
+    background-color: #f5f5f5;
+    border-radius: 20px;
+}
+
+p {
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 0.25em;
+    box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+    width: 20rem;
+    margin: 10px auto;
+    
+  }
+
+.form-inbox {
+    margin-bottom: 15px;
+}
+.form-label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.form-button {
+    padding: 10px 20px;
+    background-color: hsl(0 0% 60% / 0.18);
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.form-button:hover {
+    background-color: hsl(0 0% 20% / 0.18);
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    margin-bottom: 10px;
+}
+.error {
+    color: red;
+}
