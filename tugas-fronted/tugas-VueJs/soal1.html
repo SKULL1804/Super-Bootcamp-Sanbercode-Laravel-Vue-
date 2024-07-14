@@ -8,21 +8,20 @@
 </head>
 <body>
     <div id="app">
-        <div class="heading">
-            <label>Role</label>
-            <button class="btn"><a href="soal2.html">Soal 2</a></button>
-        </div>
-        <select v-model="selectedRole">
-          <option disabled value="">Pilih salah satu Role</option>
-          <option value="1">Imposter</option>
-          <option value="2">Crew</option>
-        </select>
-        
-        <p v-if="selectedRole === '1'">Tugas Anda adalah untuk membunuh semua Crew</p>
-        <p v-if="selectedRole === '2'">Anda Bertugas untuk menyelesaikan semua task dan jangan sampai terbunuh</p>
-
-       
+      <div class="heading">
+          <label>Role</label>
+          <button class="btn"><a href="soal2.html">Soal 2</a></button>
       </div>
+      <select v-model="selectedRole">
+        <option disabled value="">Pilih salah satu Role</option>
+        <option value="1">Imposter</option>
+        <option value="2">Crew</option>
+      </select>
+      
+      <p v-if="selectedRole === '1'">Tugas Anda adalah untuk membunuh semua Crew</p>
+      <p v-if="selectedRole === '2'">Anda Bertugas untuk menyelesaikan semua task dan jangan sampai terbunuh</p>
+
+    </div>
 
       <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 
