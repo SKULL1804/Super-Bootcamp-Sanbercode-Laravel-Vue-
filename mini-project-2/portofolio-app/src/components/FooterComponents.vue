@@ -14,7 +14,7 @@
                         class="text-base sm:text-2xl font-medium hover:bg-inherit hover:underline underline-offset-8 decoration-gray-500 focus:bg-inherit focus:underline focus:text-gray-500 hover:focus:active:text-gray-500 hover:focus:active:bg-inherit">About</RouterLink>
                 </li>
                 <li class="hover:text-gray-500"><RouterLink to="/skill"
-                        class="text-base sm:text-2xl font-medium hover:bg-inherit hover:underline underline-offset-8 decoration-gray-500 focus:bg-inherit focus:underline focus:text-gray-500 hover:focus:active:text-gray-500 hover:focus:active:bg-inherit">Skill</RouterLink>
+                        class="text-base sm:text-2xl font-medium hover:bg-inherit hover:underline underline-offset-8 decoration-gray-500 focus:bg-inherit focus:underline focus:text-gray-500 hover:focus:active:text-gray-500 hover:focus:active:bg-inherit">Skills</RouterLink>
                 </li>
                 <li class="hover:text-gray-500"><RouterLink to="/experience"
                         class="text-base sm:text-2xl font-medium hover:bg-inherit hover:underline underline-offset-8 decoration-gray-500 focus:bg-inherit focus:underline focus:text-gray-500 hover:focus:active:text-gray-500 hover:focus:active:bg-inherit">Experience</RouterLink>

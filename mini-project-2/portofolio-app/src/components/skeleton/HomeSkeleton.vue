@@ -1,6 +1,6 @@
 <template>
     <!-- Home -->
-    <section class="box-border min-h-[90vh]  sm:h-[83vh] pt-[4vh] mb-0 mt-0 mx-[5%] sm:mb-24 xl:mx-40">
+    <section class="box-border min-h-[90vh] sm:h-[83vh] pt-[4vh] mb-0 mt-0 mx-[5%] sm:mb-24 xl:mx-40">
         <div class="flex items-center justify-center flex-col xl:gap-20 xl:flex-row">
             <img
                 class="skeleton mb-8 mx-auto xl:my-10 w-[40vw] h-[40vw] sm:w-[275px] sm:h-[275px] xl:w-96 xl:h-96 rounded-full shadow-2xl" />

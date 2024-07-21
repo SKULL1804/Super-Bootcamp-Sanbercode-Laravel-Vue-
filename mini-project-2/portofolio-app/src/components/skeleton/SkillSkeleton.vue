@@ -1,10 +1,11 @@
 <script setup>
 import SectionTitle from '../skeleton/TitleSkeleton.vue';
+import Section from '../section/SectionComponents.vue';
 </script>
 
 <template>
     <!-- Skill -->
-    <section class="box-border h-fit pt-[4vh] mb-0 mt-8 mx-[5%] xl:mt-0">
+    <Section>
         <SectionTitle/>
 
         <div class="flex flex-col gap-10 my-8 justify-center sm:items-stretch text-center sm:flex-row ">
@@ -35,6 +36,6 @@ import SectionTitle from '../skeleton/TitleSkeleton.vue';
                 <!-- End Fronted -->
             </div>
         </div>
-    </section>
+    </Section>
     <!-- End Skill -->
 </template>

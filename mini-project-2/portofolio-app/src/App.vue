@@ -12,7 +12,7 @@ const themeStore = useThemeStore();
 onMounted(() => {
   setTimeout(() => {
     isLoading.value = false;
-  }, 3000); // Simulate loading for 3 seconds
+  }, 3000);
 });
 
 themeStore.updateDOM();
@@ -24,16 +24,16 @@ themeStore.updateDOM();
   <!-- End Navbar -->
 
   <!-- Main -->
-  <main class="container mx-auto max-w-6xl h-full">
+  <main class="container mx-auto max-w-6xl h-full transition-colors duration-500">
     <router-view v-slot="{ Component }">
       <transition
-        enter-from-class="opacity-0 translate-y-28 sm-enter-from"
-        enter-to-class="opacity-100 translate-y-0 sm-enter-to"
-        enter-active-class="transition-all duration-500 ease-out sm-enter-active"
+        enter-from-class="opacity-0 transform -translate-y-28 delay-300 sm-enter-from"
+        enter-to-class="opacity-100 transform -translate-y-0 sm-enter-to"
+        enter-active-class="transition-all duration-500 ease-out delay-300 sm-enter-active"
         
-        leave-from-class="opacity-100 translate-y-0 sm-leave-from"
-        leave-to-class="opacity-0 -translate-y-28 sm-leave-to"
-        leave-active-class="transition-all duration-500 ease-in sm-leave-active"
+        leave-from-class="opacity-100 transform -translate-y-0 sm-leave-from"
+        leave-to-class="opacity-0 transform -translate-y-28 delay-300 sm-leave-to"
+        leave-active-class="transition-all duration-500 delay-300 ease-in sm-leave-active"
       >
         <component :is="Component" /> 
       </transition>
@@ -54,28 +54,35 @@ themeStore.updateDOM();
 
 /* Tambahkan ini di dalam style tag di komponen Vue atau di file CSS global */
 <style>
+/* .app-container {
+  transition: background-color 0.5s, color 0.5s;
+} */
+
 @media (min-width: 640px) {
   .sm-enter-from {
     opacity: 0;
     transform: translatex(100px);
+    transition-delay: 0.3s; /* Enter delay */
   }
   .sm-enter-to {
     opacity: 1;
     transform: translatex(0);
   }
   .sm-enter-active {
-    transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out 0.3s; /* Transition duration and enter delay */
   }
+
   .sm-leave-from {
     opacity: 1;
     transform: translatex(0);
   }
   .sm-leave-to {
     opacity: 0;
-    transform: translatex(-100px);
+    transform: translatex(100px);
+    transition-delay: 0.3s; /* Leave delay */
   }
   .sm-leave-active {
-    transition: all 0.5s ease-in;
+    transition: all 0.5s ease-in 0.3s; /* Transition duration and leave delay */
   }
 }
 </style>

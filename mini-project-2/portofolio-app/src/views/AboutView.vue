@@ -2,7 +2,6 @@
 // Components 
 import About from "../components/AboutComponents.vue";
 import AboutSkeleton from "../components/skeleton/AboutSkeleton.vue";
-
 import { ref, onMounted} from 'vue';
 
 const isLoading = ref(true);

@@ -1,5 +1,16 @@
 <script setup>
 import Contact from '../components/ContactComponents.vue';
+import ContactSkeleton from '../components/skeleton/ContactSkeleton.vue';
+import { ref, onMounted} from 'vue';
+
+const isLoading = ref(true);
+
+onMounted(() => {
+  setTimeout(() => {
+    isLoading.value = false;
+  }, 3000); // 
+});
+
 const contacts = [
     {
         id: 1,
@@ -19,6 +30,7 @@ const contacts = [
 
 <template>
     <div>
-        <Contact :contacts="contacts" />
+        <ContactSkeleton v-if="isLoading"/>
+        <Contact :contacts="contacts" v-else/>
     </div>
 </template>

@@ -1,2 +1,12 @@
 @import './base.css';
 
+/* [data-theme="pastel"] {
+  --transition-duration: 0.2s;
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+}
+
+[data-theme="dracula"] {
+  --transition-duration: 0.2s;
+  transition: background-color var(--transition-duration), color var(--transition-duration);
+} */
+
