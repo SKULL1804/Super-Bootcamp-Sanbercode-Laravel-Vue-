@@ -21,7 +21,7 @@ const props = defineProps({
                 </h1>
                 <form action="#" class="mt-8 grid grid-cols-6 gap-6">
                     <div class="col-span-6" v-if="isInputan">
-                        <label id="username" for="username"  class="input input-bordered flex items-center gap-2">
+                        <label class="input input-bordered flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                 class="h-4 w-4 opacity-70">
                                 <path
@@ -32,7 +32,7 @@ const props = defineProps({
                     </div>
 
                     <div class="col-span-6">
-                        <label id="email" for="email" class="input input-bordered flex items-center gap-2">
+                        <label class="input input-bordered flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                 class="h-4 w-4 opacity-70">
                                 <path
@@ -45,7 +45,7 @@ const props = defineProps({
                     </div>
 
                     <div class="col-span-6">
-                        <label id="password" for="password" class="input input-bordered flex items-center gap-2">
+                        <label class="input input-bordered flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                 class="h-4 w-4 opacity-70">
                                 <path fill-rule="evenodd"
@@ -62,20 +62,22 @@ const props = defineProps({
                         </button>
                         <div v-if="isInputan">
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
-                            Already have an account?
-                            <RouterLink to="/login" class="text-gray-700 underline dark:text-gray-200">Login</RouterLink>.
-                        </p>
+                                Already have an account?
+                                <RouterLink to="/login" class="text-gray-700 underline dark:text-gray-200">Login
+                                </RouterLink>.
+                            </p>
                         </div>
 
                         <div v-else>
                             <p class="mt-4 text-sm text-gray-500 sm:mt-0 dark:text-gray-400">
-                            Don't have an account?
-                            <RouterLink to="/register" class="text-gray-700 underline dark:text-gray-200">Register</RouterLink>.
-                        </p>
+                                Don't have an account?
+                                <RouterLink to="/register" class="text-gray-700 underline dark:text-gray-200">Register
+                                </RouterLink>.
+                            </p>
                         </div>
 
 
-                        
+
                     </div>
                 </form>
             </div>

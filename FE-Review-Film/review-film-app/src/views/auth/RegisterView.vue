@@ -4,6 +4,6 @@ import Auth from '@/components/auth/AuthComponents.vue';
 
 <template>
     <div>
-        <Auth title="Register" isInputan="true" />
+        <Auth title="Register" :isInputan="true" />
     </div>
 </template>
