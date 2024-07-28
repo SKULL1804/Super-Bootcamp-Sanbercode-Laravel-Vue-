@@ -64,7 +64,7 @@ export const useAuthStore = defineStore("authStore", () => {
       localStorage.setItem("user", JSON.stringify(user));
 
       handleSuccess(data.message);
-      redirectWithDelay("login");
+      redirectWithDelay("home");
     } catch (error) {
       handleError(error);
     }
@@ -88,7 +88,13 @@ export const useAuthStore = defineStore("authStore", () => {
       localStorage.setItem("user", JSON.stringify(user));
 
       handleSuccess(data.message);
-      redirectWithDelay("home");
+
+      if (user.role.name === 'admin') {
+        redirectWithDelay("admin");
+      } else {
+        redirectWithDelay("home");
+      }
+      
     } catch (error) {
       handleError(error);
     }
@@ -112,7 +118,8 @@ export const useAuthStore = defineStore("authStore", () => {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
 
-      handleSuccess("Logout successful! Redirecting to Home...");
+      // handleSuccess("Logout successful! Redirecting to Home...");
+
       redirectWithDelay("home");
     } catch (error) {
       console.log(error);
@@ -140,7 +147,7 @@ export const useAuthStore = defineStore("authStore", () => {
       resetMessages();
       const dataToSend = {};
 
-      if (input.name) dataToSend.name = input.name;
+      if (input.username) dataToSend.username = input.username;
       if (input.email) dataToSend.email = input.email;
       if (input.password) dataToSend.password = input.password;
       if (input.password_confirmation)

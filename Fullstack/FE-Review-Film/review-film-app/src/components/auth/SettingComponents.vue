@@ -18,20 +18,18 @@ onMounted(() => {
 });
 
 const handleUpdate = async () => {
-    const dataToUpdate = {
-        username: formData.username,
-        password: formData.password,
-        password_confirmation: formData.password_confirmation,
-    };
+        const dataToUpdate = {
+            username: formData.username,
+            password: formData.password,
+            password_confirmation: formData.password_confirmation,
+        };
 
-    if (formData.email !== authStore.currentUser.email) {
-        dataToUpdate.email = formData.email;
-    }
-
+        if (formData.email !== authStore.currentUser.email) {
+            dataToUpdate.email = formData.email;
+        }
     await authStore.updateUser(formData);
 };
 </script>
-
 
 <template>
     <section class="h-fit pt-[4vh] mb-0 mt-0 mx-[5%] space-y-2">

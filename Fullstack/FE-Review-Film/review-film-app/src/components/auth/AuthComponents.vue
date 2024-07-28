@@ -38,7 +38,7 @@ const handleAuth = async () => {
         <div class="relative rounded-xl shadow-2xl p-4 sm:p-6 lg:p-8">
             <div class="max-w-xl lg:max-w-3xl select-none space-y-4">
                 <h1 class="text-2xl text-center font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                    {{ props.title }}
+                    {{ title }}
                 </h1>
 
                 <!-- Error Message -->

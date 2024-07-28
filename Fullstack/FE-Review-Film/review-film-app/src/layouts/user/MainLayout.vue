@@ -1,9 +1,8 @@
 <script setup>
-import Navbar from '../components/layouts/NavbarComponents.vue';
-import { useAuthStore } from "@/stores/authStore";
+import Navbar from '@/components/layouts/NavbarComponents.vue';
+// import { useAuthStore } from "@/stores/authStore";
 
-const authStore = useAuthStore();
-
+// const authStore = useAuthStore();
 </script>
 
 <template>
