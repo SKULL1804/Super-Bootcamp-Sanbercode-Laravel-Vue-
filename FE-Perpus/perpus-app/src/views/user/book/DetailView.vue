@@ -22,7 +22,7 @@ onMounted( () => {
                 <div class="card-body px-12">
                     <div class="mb-4">
                         <div class="block space-y-2 sm:space-x-0 justify-between items-center sm:flex">
-                            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white "> {{ bookStore.currentBook?.title }}
+                            <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl "> {{ bookStore.currentBook?.title }}
                             </h1>
                             <RouterLink :to="{ name: 'book' }" class="btn btn-primary rounded-3xl text-white" type="button">
                                 Back

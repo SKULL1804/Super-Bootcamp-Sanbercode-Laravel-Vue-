@@ -61,7 +61,7 @@ onMounted(async () => {
                     <div class="items-center justify-between block sm:flex">
                         <div class="flex items-center mb-4 sm:mb-0">
                             <form class="sm:pr-3" action="#" method="GET">
-                                <label class="input input-bordered flex items-center gap-2">
+                                <label class="input input-bordered flex items-center gap-2 w-10">
                                     <input v-model="search" type="text" class="grow" placeholder="Search" />
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor"
                                         class="h-4 w-4 opacity-70">
