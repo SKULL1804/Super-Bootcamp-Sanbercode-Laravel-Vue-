@@ -36,12 +36,19 @@ const router = createRouter({
         {
           path: '/',
           name: 'home',
-          component: Home
+          component: Home,
+          meta: {
+            title: 'Home | Perpus App'
+          }
+          
         },
         {
           path: '/book/:category?',
           name: 'book',
           component: Book,
+          meta: {
+            title: 'Book | Perpus App'
+          }
         },
         {
           path: 'detail/book/:id',
@@ -52,16 +59,25 @@ const router = createRouter({
           path: 'book/borrows',
           name: 'borrows',
           component: Borrows,
+          meta: {
+            title: 'Borrows | Perpus App'
+          }
         },
         {
           path: '/profile',
           name: 'profile',
           component: Profile,
+          meta: {
+            title: 'Profile | Perpus App'
+          }
         },
         {
           path: '/history',
           name: 'history',
           component: History,
+          meta: {
+            title: 'History | Perpus App'
+          }
         },
       ]
     },
@@ -72,47 +88,74 @@ const router = createRouter({
         {
           path: '/owner',
           name: 'homeOwner',
-          component: HomeOwner
+          component: HomeOwner,
+          meta: {
+            title: 'Home | Owner'
+          }
         },
         {
           path: '/owner/category',
           name: 'categoryOwner',
-          component: CategoryOwner
+          component: CategoryOwner,
+          meta: {
+            title: 'Category | Owner'
+          }
         },
         {
           path: '/owner/profile',
           name: 'profileOwner',
           component: ProfileOwner,
+          meta: {
+            title: 'Profile | Owner'
+          }
         },
         {
           path: '/owner/role',
           name: 'roleOwner',
-          component: RoleOwner
+          component: RoleOwner,
+          meta: {
+            title: 'Role | Owner'
+          }
         },
         {
           path: '/owner/book',
           name: 'bookOwner',
-          component: BookOwner
+          component: BookOwner,
+          meta: {
+            title: ' Book | Owner'
+          }
         },
         {
           path: '/owner/create/book',
           name: 'createBook',
-          component: CreateBook
+          component: CreateBook,
+          meta: {
+            title: 'Create | Owner'
+          }
         },
         {
           path: '/owner/edit/book/:id',
           name: 'editBook',
-          component: EditBook
+          component: EditBook,
+          meta: {
+            title: 'Edit | Owner'
+          }
         },
         {
           path: '/owner/datail/book/:id',
           name: 'detailBook',
-          component: DetailBook
+          component: DetailBook,
+          meta: {
+            title: 'Detail | Owner'
+          }
         },
         {
           path: '/borrows',
           name: 'borrowsOwner',
           component: BorowsOwner,
+          meta: {
+            title: 'Borrows | Owner'
+          }
         },
       ],
       meta: { requiresOwner: true }
@@ -137,6 +180,7 @@ router.beforeEach(async (to, from, next) => {
   const loadingStore = useLoadingStore();
   const isAuthenticated = !!authStore.tokenUser
   const isOwner = authStore.currentUser?.role?.name === 'owner'
+  document.title =  to.meta.title || 'Perpus App';
   loadingStore.showLoader();
   if (to.meta.requiresAuth) {
     if (!isAuthenticated) {
@@ -158,7 +202,7 @@ router.beforeEach(async (to, from, next) => {
 
 router.afterEach( async () => {
   const loadingStore = useLoadingStore();
-  await new Promise(resolve => setTimeout(resolve, 5000));
+  await new Promise(resolve => setTimeout(resolve, 3000));
   loadingStore.hideLoader();
 });
 export default router
