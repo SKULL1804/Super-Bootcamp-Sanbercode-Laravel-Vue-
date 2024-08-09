@@ -133,6 +133,7 @@ onMounted(() => {
                             <span class="label-text">Category</span>
                         </div>
                         <select v-model="input.category_id" class="select select-bordered">
+                            <option disabled selected value="">Pilih Category</option>
                             <option v-for="category in categories" :key="category.id" :value="category.id">
                                 {{ category.name }}
                             </option>
@@ -143,7 +144,7 @@ onMounted(() => {
                 <div class="col-span-full">
                     <label class="form-control">
                         <div class="label">
-                            <span class="label-text">Poster Film</span>
+                            <span class="label-text">Cover Book</span>
                         </div>
                         <input @change="handleUpload" type="file"
                             class="file-input file-input-bordered  file-input-primary w-full" />
