@@ -8,6 +8,9 @@ https://documenter.getpostman.com/view/35002022/2sA3XY6daw#723a2043-14e0-4571-a9
 # Google Drive
 Link : https://drive.google.com/file/d/18HTmfUtrRQ1FumLBP3iiHMrnWNQ9zF-F/view?usp=drive_link
 
+# Link Deploy
+https://perpus-app.vercel.app/
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
