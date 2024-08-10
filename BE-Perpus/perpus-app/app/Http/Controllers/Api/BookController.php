@@ -8,18 +8,32 @@ use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
 use App\Http\Requests\BookRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Routing\Controllers\HasMiddleware;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 
 class BookController extends Controller implements HasMiddleware
 {
+    protected $cloudinary;
+
     public static function middleware(): array
     {
         return [
             new Middleware(['auth:api', 'isOwner'], only: ['store', 'update', 'destroy']),
         ];
     }
+
+    public function __construct()
+    {
+        $this->cloudinary = new Cloudinary([
+            'cloud' => [
+                'cloud_name' => env('CLOUDINARY_CLOUD_NAME'),
+                'api_key' => env('CLOUDINARY_API_KEY'),
+                'api_secret' => env('CLOUDINARY_API_SECRET'),
+            ],
+        ]);
+    }
+
 
     public function index(Request $request): JsonResponse
     {
@@ -41,20 +55,11 @@ class BookController extends Controller implements HasMiddleware
     {
         $data = $request->validated();
 
-        // $imagePath  = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
+        $imagePath = Cloudinary::upload($request->file('image')->getRealPath(), [
+            'folder' => 'cover',
+        ])->getSecurePath();
 
-        // $data['image'] = $imagePath;
-
-        if ($request->hasFile('image')) {
-
-            $imageName = time() . '.' . $request->image->extension();
-
-            $request->image->storeAs('public/img/cover', $imageName);
-
-            $url = url('storage/img/cover/' . $imageName);
-
-            $data['image'] = $url;
-        }
+        $data['image'] = $imagePath;
 
         $book = Book::create($data);
 
@@ -93,22 +98,18 @@ class BookController extends Controller implements HasMiddleware
         }
 
         if ($request->hasFile('image')) {
-
             if ($book->image) {
-
-                $oldImagePath = str_replace('/storage', 'public', $book->image);
-
-                Storage::delete($oldImagePath);
+                $oldImagePublicId = $this->getPublicIdFromUrl($book->image);
+                Cloudinary::destroy($oldImagePublicId);
             }
 
-            $imageName = time() . '.' . $request->image->extension();
-
-            $request->image->storeAs('public/img/cover', $imageName);
-
-            $url = url('storage/img/cover/' . $imageName);
-
-            $data['image'] = $url;
+            $image = $request->file('image');
+            $upload = Cloudinary::upload($image->getRealPath(), [
+                    'folder' => 'cover',
+                ])->getSecurePath();
+            $data['image'] = $upload;
         }
+
 
         $book->update($data);
 
@@ -116,6 +117,18 @@ class BookController extends Controller implements HasMiddleware
             "message" => "Data berhasil diupdate",
             "data" => $book,
         ]);
+    }
+
+
+    private function getPublicIdFromUrl($url)
+    {
+        $parts = parse_url($url);
+        $path = $parts['path'] ?? '';
+        $path = ltrim($path, '/');
+        $segments = explode('/', $path);
+        $filename = array_pop($segments);
+        $publicId = pathinfo($filename, PATHINFO_FILENAME);
+        return $publicId;
     }
 
     public function destroy(string $id)
@@ -129,13 +142,10 @@ class BookController extends Controller implements HasMiddleware
         }
 
         if ($book->image) {
-
-            $imagePath = str_replace(url('storage') . '/', '', $book->image);
-
-            if (Storage::exists('public/' . $imagePath)) {
-                Storage::delete('public/' . $imagePath);
-            }
+            $oldImagePublicId = $this->getPublicIdFromUrl($book->image);
+            Cloudinary::destroy($oldImagePublicId);
         }
+
         $book->delete();
 
         return response()->json([
