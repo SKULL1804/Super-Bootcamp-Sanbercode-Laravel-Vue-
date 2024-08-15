@@ -51,8 +51,6 @@ themeStore.updateDOM();
    
 </template>
 
-
-/* Tambahkan ini di dalam style tag di komponen Vue atau di file CSS global */
 <style>
 /* .app-container {
   transition: background-color 0.5s, color 0.5s;

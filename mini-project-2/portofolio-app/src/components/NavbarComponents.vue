@@ -33,7 +33,7 @@ onUnmounted(() => {
             <RouterLink to="/" class="flex items-center gap-2">
                 <img src="@/assets/img/skull.png" alt="Skull" class="w-10 rounded-full hidden md:block">
                 <span class="font-semibold text-2xl select-none">Ratcher</span>
-            </RouterLink>
+            </RouterLink>   
             <div class="hidden xl:flex">
                 <ul class="menu menu-horizontal px-1">
                     <li class="hover:text-gray-500">
@@ -96,32 +96,32 @@ onUnmounted(() => {
             <div v-if="isOpen" class="fixed z-10 top-14 left-4 right-4 xl:hidden">
                 <ul class="menu menu-sm bg-base-100/90 rounded-box z-[1] my-10 shadow-xl w-screen h-[70vh] sm:h-[40vh]">
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/" @click.native="toggleMenu"
+                        <RouterLink to="/" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-500 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             Home</RouterLink>
                     </li>
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/about" @click.native="toggleMenu"
+                        <RouterLink to="/about" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-500 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             About</RouterLink>
                     </li>
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/skill" @click.native="toggleMenu"
+                        <RouterLink to="/skill" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-500 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             Skill</RouterLink>
                     </li>
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/experience" @click.native="toggleMenu"
+                        <RouterLink to="/experience" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-500 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             Experience</RouterLink>
                     </li>
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/portofolio" @click.native="toggleMenu"
+                        <RouterLink to="/portofolio" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-500 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             Portofolio</RouterLink>
                     </li>
                     <li class="hover:text-gray-500">
-                        <RouterLink to="/contact" @click.native="toggleMenu"
+                        <RouterLink to="/contact" v-on:click="toggleMenu"
                             class="text-xl font-light hover:bg-gray-50 focus:bg-gray-50 hover:focus:active:text-gray-50 hover:focus:active:bg-gray-600">
                             Contact
                             Me</RouterLink>
