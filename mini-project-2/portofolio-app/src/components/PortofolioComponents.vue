@@ -64,7 +64,8 @@ onMounted(() => {
                                 <h2 class="card-title text-lg sm:text-xl text-gray-900">{{ portofolio.title }}</h2>
                                 <p class="text-lg tracking-wide sm:text-xl">{{ portofolio.desription }}</p>
                                 <div class="card-actions">
-                                    <a :href="portofolio.linkGithub" target="_blank" class="btn btn-outline">GitHub</a>
+                                    <a v-if="portofolio.linkDeploy" :href="portofolio.linkDeploy" target="_blank" class="btn btn-outline">Deploy</a>
+                                    <a v-else :href="portofolio.linkGithub" target="_blank" class="btn btn-outline">GitHub</a>
                                 </div>
                             </div>
                         </div>
@@ -84,7 +85,8 @@ onMounted(() => {
                         <h2 class="card-title">{{ portofolio.title }}</h2>
                         <p>{{ portofolio.desription }}</p>
                         <div class="card-actions">
-                            <a :href="portofolio.linkGithub" target="_blank" class="btn btn-outline">GitHub</a>
+                            <a v-if="portofolio.linkDeploy" :href="portofolio.linkDeploy" target="_blank" class="btn btn-outline">Deploy</a>
+                            <a v-else :href="portofolio.linkGithub" target="_blank" class="btn btn-outline">GitHub</a>
                         </div>
                     </div>
                 </div>
